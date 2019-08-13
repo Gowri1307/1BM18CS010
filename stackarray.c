@@ -23,7 +23,7 @@ void display(int stack[100], int top) {
 	if (top == -1) {
 		printf("Stack Underflow \n");
 	} else {
-		for (i = 0; i <= top; ++i) {
+		for (i = 0; i < top; ++i) {
 			printf("\n %d \n", stack[i]);
 		}
 	}
