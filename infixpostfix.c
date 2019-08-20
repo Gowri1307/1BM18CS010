@@ -5,7 +5,7 @@ void push(char stack[], int *top, char ele) {
 		printf("Stack overflow\n");
 		return;
 	}
-	stack[++(*top)] = ele;
+	stack[++*top] = ele;
 }
 
 char pop(char stack[], int *top) {
@@ -13,7 +13,7 @@ char pop(char stack[], int *top) {
 		printf("Stack underflow\n");
 		return '\0';
 	}
-	return stack[(*top)--];
+	return stack[*top--];
 }
 
 
@@ -29,7 +29,7 @@ int precedance(char c) {
 }
 
 int isOperand(char c) {
-	if (precedance(c) == 0)
+	if (!precedance(c))
 		return 1;
 	return 0;
 }
@@ -37,9 +37,9 @@ int isOperand(char c) {
 int main(int argc, char **argv) {
 	char *exp = argv[1];
 	char stack[100];
-	int top = -1;
+	int top = -1, i;
 
-	for (int i = 0; exp[i] != '\0'; i++) {
+	for (i = 0; exp[i] != '\0'; i++) {
 		if (isOperand(exp[i])) {
 			printf("%c", exp[i]);
 		}		
@@ -65,8 +65,6 @@ int main(int argc, char **argv) {
 		if (stack[top] != '(' && stack[top] != ')')
 			printf("%c", pop(stack, &top));
 	}
-
-	printf("\n");
 
 	return 0;
 }
