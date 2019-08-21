@@ -25,8 +25,7 @@ int main() {
 	
 	infix[strlen(infix)] = '\0';
 	
-	while (infix[i] != '\0')
-	{
+	while (infix[i] != '\0') {
 		if (isalnum(infix[i])) printf("%c", infix[i]);
 		else if (infix[i] == '(') push(infix[i], stack, &top);
 		else if (infix[i] == ')') {
