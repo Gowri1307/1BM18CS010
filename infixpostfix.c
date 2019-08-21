@@ -1,70 +1,47 @@
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
-void push(char stack[], int *top, char ele) {
-	if (*top == 99) {
-		printf("Stack overflow\n");
-		return;
-	}
-	stack[++*top] = ele;
+void push(char ele, char stack[50], int *top) {
+	if(*top == 99) printf("Stack Overflow\n");
+	else stack[++(*top)] = ele;
 }
-
-char pop(char stack[], int *top) {
-	if (*top == -1) {
-		printf("Stack underflow\n");
-		return '\0';
-	}
-	return stack[*top--];
+char pop(char stack[50],int *top) {
+	if(*top == -1) return -3;
+	else return stack[(*top)--];
 }
-
-
-int precedance(char c) {
-	switch(c) {
-		case '+':
-		case '-': return 1;
-		case '*':
-		case '/': return 2;
-		case '^': return 3;
-		default: return 0;
-	}
+int precedence(char ele) {
+	if(ele == '^') return 3;
+	else if(ele == '*' || ele == '/') return 2;
+	else if(ele == '+' || ele == '-') return 1;
 }
-
-int isOperand(char c) {
-	if (!precedance(c))
-		return 1;
-	return 0;
-}
-
-int main(int argc, char **argv) {
-	char *exp = argv[1];
-	char stack[100];
-	int top = -1, i;
-
-	for (i = 0; exp[i] != '\0'; i++) {
-		if (isOperand(exp[i])) {
-			printf("%c", exp[i]);
-		}		
-		else if (exp[i] == ')') {
-			char c;
-			while ((c = pop(stack, &top)) != '(') 
-				printf("%c", c);
+int main() {
+	char stack[50], infix[50];
+	char e;
+	int top = -1, i  =0, j;
+	
+	printf("Infix Expression: ");
+        scanf("%s", infix);
+	
+	infix[strlen(infix)] = '\0';
+	
+	while(infix[i] != '\0')
+	{
+		if(isalnum(infix[i])) printf("%c", infix[i]);
+		else if(infix[i] == '(') push(infix[i], stack, &top);
+		else if(infix[i] == ')') {
+			while((e = pop(stack,&top)) != '(') printf("%c", e);
 		}
 		else {
-		       	if (exp[i] == '(')
-				push(stack, &top, exp[i]);	
-			else if (precedance(exp[i]) > precedance(stack[top]))
-				push(stack, &top, exp[i]);
+			if(precedence(stack[top]) >= precedence(infix[i])) push(infix[i], stack, &top);
 			else {
-				while (precedance(stack[top]) >= precedance(exp[i]))
-					printf("%c", pop(stack, &top));
-				push(stack, &top, exp[i]);
+				while(precedence(stack[top]) >= precedence(infix[i]))
+					e = pop(stack, &top);
+				push(infix[i], stack, &top);
 			}
 		}
+		i++;
 	}
-
-	while (top > -1) {
-		if (stack[top] != '(' && stack[top] != ')')
-			printf("%c", pop(stack, &top));
-	}
-
+	while(top != -1) printf("%c",pop(stack,&top));
 	return 0;
 }
