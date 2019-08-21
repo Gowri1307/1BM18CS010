@@ -18,7 +18,7 @@ int precedence(char ele) {
 int main() {
 	char stack[50], infix[50];
 	char e;
-	int top = -1, i  =0, j;
+	int top = -1, i  = 0, j;
 	
 	printf("Infix Expression: ");
         scanf("%s", infix);
