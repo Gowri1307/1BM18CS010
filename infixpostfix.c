@@ -7,7 +7,7 @@ void push(char ele, char stack[50], int *top) {
 	else stack[++(*top)] = ele;
 }
 char pop(char stack[50],int *top) {
-	if(*top == -1) return -3;
+	if(*top == -1) return -1;
 	else return stack[(*top)--];
 }
 int precedence(char ele) {
