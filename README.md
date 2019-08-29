@@ -6,3 +6,4 @@
 > 3. Program 3: Lab 2 -> stackarray: Stacks With Arrays
 > 4. Program 4: Lab 3 -> infixpostfix: Conversion of Infix to Postfix
 > 5. Program 5: Lab 4 -> postfixeval: Evauation of Postfix Expression
+> 6. Program 6: Tower of Hanoi
