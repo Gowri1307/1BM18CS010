@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include <stdio.h>
 #define size 10
 
 void insert(int ele, int queue[], int *r, int *f) {
