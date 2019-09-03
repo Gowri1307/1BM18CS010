@@ -21,7 +21,7 @@ void display(int queue[], int f, int r) {
 }
 
 int main() {
-	int queue[10];
+	int queue[size];
 	int f = 0, r = -1, option, ele, ch;
 	do {
 		printf(" 1.Insert \n 2.Deletion \n 3.Display \n");
