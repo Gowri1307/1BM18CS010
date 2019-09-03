@@ -8,3 +8,4 @@
 > 5. Lab 4 -> postfixeval: Evauation of Postfix Expression
 > 6. Tower of Hanoi
 > 7. Process Scheduling with Queues
+> 8. Lab 5: Queue & Circular Queue
