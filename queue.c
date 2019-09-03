@@ -45,7 +45,7 @@ int main() {
 			default: printf("Invalid Input \n");
 		}
 
-	printf("Try Again (1 For Yes/2 For No)?");
+	printf("Try Again (1 For Yes/2 For No)? \n");
 	scanf("%d", &ch);
 	} while (ch == 1);
 
